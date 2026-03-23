@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR World - Виртуальные Игры Будущего</title>
+    <style>
+        /* --- Общие стили --- */
+        :root {
+            --primary-bg: #e3f2fd;       /* Светло-синий фон */
+            --secondary-bg: #ffffff;     /* Белый для карточек */
+            --accent-color: #1565c0;     /* Насыщенный синий */
+            --text-color: #37474f;       /* Темно-серый для текста */
+            --button-hover: #0d47a1;     /* Темно-синий для ховера */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Шапка (Header) --- */
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+            transition: 0.3s;
+        }
+
+        /* --- Главный экран (Hero) --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
+        }
+
+        /* --- Преимущества --- */
+        .features {
+            padding: 50px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* --- Галерея игр --- */
+        .games {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--accent-color);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .game-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .game-image {
+            height: 200px;
+            background-color: #90caf9; /* Заглушка для цвета */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        /* Разные цвета заглушек для разнообразия */
+        .g1 { background: linear-gradient(45deg, #42a5f5, #1e88e5); }
+        .g2 { background: linear-gradient(45deg, #66bb6a, #43a047); }
+        .g3 { background: linear-gradient(45deg, #ab47bc, #8e24aa); }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-info h3 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .game-info p {
+            font-size: 0.9rem;
+            color: #78909c;
+            margin-bottom: 15px;
+        }
+
+        .play-link {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* --- Подвал (Footer) --- */
+        footer {
+            background-color: #b3e5fc;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        /* --- Адаптивность для мобильных --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Скрываем меню на мобильных для простоты */
+            .logo { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Шапка -->
+        <header>
+            <div class="logo">VR World</div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Преимущества</a></li>
+                    <li><a href="#games">Игры</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Главный экран -->
+        <section class="hero">
+            <h1>Погрузись в новую реальность</h1>
+            <p>Тысячи виртуальных миров доступны тебе прямо сейчас. Играй без границ, общайся с друзьями и побеждай в эпичных сражениях.</p>
+            <a href="#games" class="btn">Начать играть</a>
+        </section>
+
+        <!-- Преимущества -->
+        <section id="features" class="features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Мгновенный старт</h3>
+                    <p>Никаких долгих загрузок. Запускай игры прямо из браузера за пару секунд.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎮</span>
+                    <h3>Кроссплатформа</h3>
+                    <p>Играй на ПК, телефоне или планшете. Твой прогресс сохраняется везде.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <h3>Сообщество</h3>
+                    <p>Миллионы игроков онлайн. Находи друзей и создавай команды.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея игр -->
+        <section id="games" class="games">
+            <h2 class="section-title">Популярные игры</h2>
+            <div class="games-grid">
+                <!-- Карточка 1 -->
+                <div class="game-card">
+                    <div class="game-image g1">🏎️</div>
+                    <div class="game-info">
+                        <h3>Cyber Racing</h3>
+                        <p>Скоростные гонки в неоновом городе будущего.</p>
+                        <a href="#" class="play-link">Играть →</a>
+                    </div>
+                </div>
+                <!-- Карточка 2 -->
+                <div class="game-card">
+                    <div class="game-image g2">🛡️</div>
+                    <div class="game-info">
+                        <h3>Forest Quest</h3>
+                        <p>Исследуй таинственный лес и побеждай монстров.</p>
+                        <a href="#" class="play-link">Играть →</a>
+                    </div>
+                </div>
+                <!-- Карточка 3 -->
+                <div class="game-card">
+                    <div class="game-image g3">🚀</div>
+                    <div class="game-info">
+                        <h3>Space Battle</h3>
+                        <p>Космические сражения за галактику.</p>
+                        <a href="#" class="play-link">Играть →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer id="contact">
+        <div class="container">
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Telegram</a>
+                <a href="#">VK</a>
+            </div>
+            <p>&copy; 2023 VR World. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
